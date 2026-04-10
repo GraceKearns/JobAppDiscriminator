@@ -15,7 +15,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Verify caller identity
+        run: aws sts get-caller-identity
 
+      - name: Verify S3 list access
+        run: aws s3 ls s3://${{ secrets.S3_BUCKET_NAME }}
+        
       - name: Install dependencies
         run: npm install
 
