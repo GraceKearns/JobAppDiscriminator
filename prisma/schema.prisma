@@ -8,17 +8,16 @@ datasource db {
 }
 
 model job_app {
-  job_app_id         Int          @id @default(autoincrement())
-  job_app_userid     Int?
-  job_app_title      String       @db.VarChar(255)
-  job_app_company    String       @db.VarChar(255)
-  job_app_applied    DateTime     @db.Date
-  job_app_updated    DateTime?    @db.Date
-  job_app_status     String       @db.VarChar(255)
-  job_app_applied_at String       @db.VarChar(255)
-  job_app_notes      String?
-  userdata           userdata?    @relation(fields: [job_app_userid], references: [user_id], onDelete: Cascade, onUpdate: NoAction)
-  job_status         job_status[]
+  job_app_id      Int          @id @default(autoincrement())
+  job_app_userid  Int?
+  job_app_title   String       @db.VarChar(255)
+  job_app_company String       @db.VarChar(255)
+  job_app_applied DateTime     @db.Date
+  job_app_updated DateTime?    @db.Date
+  job_app_status  String       @db.VarChar(255)
+  job_app_notes   String?
+  userdata        userdata?    @relation(fields: [job_app_userid], references: [user_id], onDelete: Cascade, onUpdate: NoAction)
+  job_status      job_status[]
 }
 
 model job_status {
